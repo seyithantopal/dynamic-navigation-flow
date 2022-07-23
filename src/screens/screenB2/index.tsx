@@ -36,20 +36,19 @@ const mockData: IOptions[] = [
 ];
 
 const ScreenB2: FC<screenB2Prop> = ({ navigation }) => {
-  const [selectedItem, setSelectedItem] = useState<IOptions>();
+  const [selectedItem, setSelectedItem] = useState<IOptions | null>(null);
 
-  const handleChange = (item: IOptions) => {
+  const handleChange = (item: IOptions | null) => {
     setSelectedItem(item);
   };
 
   return (
     <View style={styles.wrapper}>
-      <Text>SCREENB2</Text>
       <FlatList
         data={mockData}
+        contentContainerStyle={styles.flatList}
         keyExtractor={item => item.name}
         showsVerticalScrollIndicator={false}
-        // style={styles.hotelList}
         ListEmptyComponent={() => {
           return (
             <View>

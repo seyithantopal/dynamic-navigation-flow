@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { BACKGROUND_SCREEN_C2 } from '../../utils/constants/colors';
 
 export default StyleSheet.create({
   wrapper: {
@@ -6,7 +7,7 @@ export default StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'pink',
+    backgroundColor: BACKGROUND_SCREEN_C2,
   },
   sub: {
     width: '75%',

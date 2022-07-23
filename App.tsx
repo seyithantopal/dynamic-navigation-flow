@@ -100,14 +100,7 @@ const App = () => {
           name={SCREEN_B2}
           component={ScreenB2}
           options={{
-            headerShown: true,
-            headerRight: () => (
-              <Button
-                onPress={() => console.log('This is a button!')}
-                title="Info"
-                color="#fff"
-              />
-            ),
+            headerShown: false,
           }}
         />
         <Stack.Screen
@@ -115,13 +108,6 @@ const App = () => {
           component={ScreenC2}
           options={{
             headerShown: false,
-            headerRight: () => (
-              <Button
-                onPress={() => console.log('This is a button!')}
-                title="Info"
-                color="#fff"
-              />
-            ),
           }}
         />
         <Stack.Screen
@@ -129,13 +115,6 @@ const App = () => {
           component={ScreenD}
           options={{
             headerShown: false,
-            headerRight: () => (
-              <Button
-                onPress={() => console.log('This is a button!')}
-                title="Info"
-                color="#fff"
-              />
-            ),
           }}
         />
 

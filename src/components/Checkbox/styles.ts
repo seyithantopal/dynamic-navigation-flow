@@ -7,4 +7,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 15,
   },
+  optionName: {
+    fontSize: 21,
+  },
 });

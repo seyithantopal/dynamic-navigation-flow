@@ -6,7 +6,7 @@ import styles from './styles';
 import { IOptions } from '../../types/interfaces';
 
 type Props = {
-  handleChange: (item: IOptions) => void;
+  handleChange: (item: IOptions | null) => void;
   item: IOptions;
 };
 
@@ -21,11 +21,13 @@ const Checkbox: FC<Props> = ({ item, handleChange }) => {
           onValueChange={(newValue: boolean) => {
             if (newValue) {
               handleChange(item);
+            } else {
+              handleChange(null);
             }
             setToggleCheckBox(newValue);
           }}
         />
-        <Text>{item.name}</Text>
+        <Text style={styles.optionName}>{item.name}</Text>
       </View>
     </View>
   );

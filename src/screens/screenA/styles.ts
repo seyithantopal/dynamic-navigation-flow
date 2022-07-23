@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
-// import {COLOR_BACKGROUND, COLOR_PRIMARY} from '../../utils/constants/color';
+import { BACKGROUND_SCREEN_A } from '../../utils/constants/colors';
 
 export default StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: BACKGROUND_SCREEN_A,
     padding: 15,
   },
 });
