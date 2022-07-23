@@ -4,7 +4,7 @@ import Checkbox from '../../components/Checkbox';
 import { IOptions } from '../../types/interfaces';
 import { screenB2Prop } from '../../types/navigation';
 import RightArrowIcon from '../../assets/icons/rightArrow';
-import { mockData } from '../../utils/constants/mockData';
+import { options } from '../../utils/constants/mockData';
 
 import styles from './styles';
 
@@ -18,7 +18,7 @@ const ScreenB2: FC<screenB2Prop> = ({ navigation }) => {
   return (
     <View style={styles.wrapper}>
       <FlatList
-        data={mockData}
+        data={options}
         contentContainerStyle={styles.flatList}
         keyExtractor={item => item.name}
         showsVerticalScrollIndicator={false}

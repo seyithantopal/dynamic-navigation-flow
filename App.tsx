@@ -7,8 +7,10 @@ import Storage from './src/services/storage';
 import { RootStackParamList } from './src/screens/RootStackParamList';
 import {
   SCREEN_A,
+  SCREEN_B1,
   SCREEN_B2,
   SCREEN_B3,
+  SCREEN_C1,
   SCREEN_C2,
   SCREEN_D,
   SCREEN_SAMPLE,
@@ -20,8 +22,10 @@ import {
 
 // Screens
 import ScreenA from './src/screens/screenA';
+import ScreenB1 from './src/screens/screenB1';
 import ScreenB2 from './src/screens/screenB2';
 import ScreenB3 from './src/screens/screenB3';
+import ScreenC1 from './src/screens/screenC1';
 import ScreenC2 from './src/screens/screenC2';
 import ScreenD from './src/screens/screenD';
 import ScreenSample from './src/screens/screenSample';
@@ -92,6 +96,13 @@ const App = () => {
           />
         )}
         <Stack.Screen
+          name={SCREEN_B1}
+          component={ScreenB1}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
           name={SCREEN_B2}
           component={ScreenB2}
           options={{
@@ -101,6 +112,13 @@ const App = () => {
         <Stack.Screen
           name={SCREEN_B3}
           component={ScreenB3}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name={SCREEN_C1}
+          component={ScreenC1}
           options={{
             headerShown: false,
           }}
