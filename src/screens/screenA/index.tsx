@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { FC, useEffect, useState } from 'react';
-import { ActivityIndicator, View, Text } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
 import Storage from '../../services/storage';
 import { screenAProp } from '../../types/navigation';
@@ -61,11 +61,7 @@ const ScreenA: FC<screenAProp> = ({ navigation }) => {
 
   return (
     <View style={styles.wrapper}>
-      <Text>Hello World</Text>
-      <ActivityIndicator />
       <ActivityIndicator size="large" />
-      <ActivityIndicator size="small" color="#0000ff" />
-      <ActivityIndicator size="large" color="#00ff00" />
     </View>
   );
 };

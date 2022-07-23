@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Button } from 'react-native';
+import axios from 'axios';
 import Storage from './src/services/storage';
 import { RootStackParamList } from './src/screens/RootStackParamList';
 import {
   SCREEN_A,
   SCREEN_B2,
+  SCREEN_B3,
   SCREEN_C2,
   SCREEN_D,
   SCREEN_SAMPLE,
 } from './src/utils/constants/screens';
-
-// Screens
-import ScreenA from './src/screens/screenA';
-import ScreenB2 from './src/screens/screenB2';
-import ScreenC2 from './src/screens/screenC2';
-import ScreenD from './src/screens/screenD';
-import ScreenSample from './src/screens/screenSample';
-import { Button } from 'react-native';
-import axios from 'axios';
 import {
   ALREADY_LAUNCHED_KEY,
   SESSION_ID_KEY,
 } from './src/utils/constants/common';
+
+// Screens
+import ScreenA from './src/screens/screenA';
+import ScreenB2 from './src/screens/screenB2';
+import ScreenB3 from './src/screens/screenB3';
+import ScreenC2 from './src/screens/screenC2';
+import ScreenD from './src/screens/screenD';
+import ScreenSample from './src/screens/screenSample';
 
 const App = () => {
   const [sessionId, setSessionId] = useState<string>('');
@@ -70,14 +72,7 @@ const App = () => {
             name={SCREEN_A}
             component={ScreenA}
             options={{
-              headerShown: true,
-              headerRight: () => (
-                <Button
-                  onPress={() => console.log('This is a button!')}
-                  title="Info"
-                  color="#fff"
-                />
-              ),
+              headerShown: false,
             }}
           />
         ) : (
@@ -104,6 +99,13 @@ const App = () => {
           }}
         />
         <Stack.Screen
+          name={SCREEN_B3}
+          component={ScreenB3}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
           name={SCREEN_C2}
           component={ScreenC2}
           options={{
@@ -117,14 +119,6 @@ const App = () => {
             headerShown: false,
           }}
         />
-
-        {/* <Stack.Screen
-          name="Details"
-          component={DetailsScreen}
-          options={{
-            headerShown: true,
-          }}
-        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

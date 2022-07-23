@@ -5,6 +5,8 @@ export default StyleSheet.create({
   wrapper: {
     flex: 1,
     backgroundColor: BACKGROUND_SCREEN_A,
-    padding: 15,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

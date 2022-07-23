@@ -3,6 +3,7 @@ import { RootStackParamList } from '../screens/RootStackParamList';
 import {
   SCREEN_A,
   SCREEN_B2,
+  SCREEN_B3,
   SCREEN_C2,
   SCREEN_D,
 } from '../utils/constants/screens';
@@ -15,6 +16,11 @@ export type screenAProp = NativeStackScreenProps<
 export type screenB2Prop = NativeStackScreenProps<
   RootStackParamList,
   typeof SCREEN_B2
+>;
+
+export type screenB3Prop = NativeStackScreenProps<
+  RootStackParamList,
+  typeof SCREEN_B3
 >;
 
 export type screenC2Prop = NativeStackScreenProps<

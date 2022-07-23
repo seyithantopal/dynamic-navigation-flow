@@ -9,13 +9,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: BACKGROUND_SCREEN_C2,
   },
-  sub: {
-    width: '75%',
-  },
-  description: {
-    fontSize: 21,
-    textAlign: 'center',
-  },
   leftArrowIcon: {
     position: 'absolute',
     left: 0,

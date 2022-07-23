@@ -2,12 +2,12 @@ import React, { FC, useState } from 'react';
 import {
   ActivityIndicator,
   View,
-  Text,
   TouchableWithoutFeedback,
 } from 'react-native';
 import { screenC2Prop } from '../../types/navigation';
 import LeftArrowIcon from '../../assets/icons/leftArrow';
 import { useLoading } from '../../hooks/useLoadingIcon';
+import Description from '../../components/Description';
 
 import styles from './styles';
 import Title from '../../components/Title';
@@ -35,9 +35,9 @@ const ScreenC2: FC<screenC2Prop> = ({ navigation, route }) => {
           <LeftArrowIcon />
         </View>
       </TouchableWithoutFeedback>
-      <View style={styles.sub}>
+      <View>
         <Title title={selectedItem.name} />
-        <Text style={styles.description}>{selectedItem.description}</Text>
+        <Description description={selectedItem.description} />
       </View>
       {isLoadingIcon && (
         <ActivityIndicator size={'large'} style={styles.loadingIcon} />
