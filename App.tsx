@@ -6,12 +6,16 @@ import { RootStackParamList } from './src/screens/RootStackParamList';
 import {
   SCREEN_A,
   SCREEN_B2,
+  SCREEN_C2,
+  SCREEN_D,
   SCREEN_SAMPLE,
 } from './src/utils/constants/screens';
 
 // Screens
 import ScreenA from './src/screens/screenA';
 import ScreenB2 from './src/screens/screenB2';
+import ScreenC2 from './src/screens/screenC2';
+import ScreenD from './src/screens/screenD';
 import ScreenSample from './src/screens/screenSample';
 import { Button } from 'react-native';
 import axios from 'axios';
@@ -97,6 +101,34 @@ const App = () => {
           component={ScreenB2}
           options={{
             headerShown: true,
+            headerRight: () => (
+              <Button
+                onPress={() => console.log('This is a button!')}
+                title="Info"
+                color="#fff"
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name={SCREEN_C2}
+          component={ScreenC2}
+          options={{
+            headerShown: false,
+            headerRight: () => (
+              <Button
+                onPress={() => console.log('This is a button!')}
+                title="Info"
+                color="#fff"
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name={SCREEN_D}
+          component={ScreenD}
+          options={{
+            headerShown: false,
             headerRight: () => (
               <Button
                 onPress={() => console.log('This is a button!')}

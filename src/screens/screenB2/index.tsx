@@ -10,31 +10,35 @@ import styles from './styles';
 const mockData: IOptions[] = [
   {
     name: 'Option 1',
-    description: 'Lorem ipsum',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
   {
     name: 'Option 2',
-    description: 'Lorem ipsum',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
   {
     name: 'Option 3',
-    description: 'Lorem ipsum',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
   {
     name: 'Option 4',
-    description: 'Lorem ipsum',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
   {
     name: 'Option 5',
-    description: 'Lorem ipsum',
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
 ];
 
-const ScreenB2: FC<screenB2Prop> = () => {
+const ScreenB2: FC<screenB2Prop> = ({ navigation }) => {
   const [selectedItem, setSelectedItem] = useState<IOptions>();
 
   const handleChange = (item: IOptions) => {
-    console.log('handleCheck', item);
     setSelectedItem(item);
   };
 
@@ -55,17 +59,21 @@ const ScreenB2: FC<screenB2Prop> = () => {
         }}
         renderItem={({ item }) => {
           return (
-            <TouchableWithoutFeedback
-              onPress={() => console.log('item: ', item)}>
-              <View>
-                <Checkbox handleChange={handleChange} item={item} />
-              </View>
-            </TouchableWithoutFeedback>
+            <View>
+              <Checkbox handleChange={handleChange} item={item} />
+            </View>
           );
         }}
       />
       <TouchableWithoutFeedback
-        onPress={() => console.log('clicked!', selectedItem)}>
+        onPress={() => {
+          if (selectedItem) {
+            navigation.navigate('ScreenC2', {
+              name: selectedItem?.name,
+              description: selectedItem?.description,
+            });
+          }
+        }}>
         <View style={styles.rightArrowIcon}>
           <RightArrowIcon />
         </View>
