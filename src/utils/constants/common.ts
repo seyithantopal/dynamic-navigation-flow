@@ -1,0 +1,2 @@
+export const ALREADY_LAUNCHED_KEY = '@ALREADY_LAUNCHED_KEY';
+export const SESSION_ID_KEY = '@SESSION_ID_KEY';
