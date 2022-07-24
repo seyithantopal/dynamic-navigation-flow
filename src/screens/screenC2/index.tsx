@@ -4,7 +4,6 @@ import {
   View,
   TouchableWithoutFeedback,
 } from 'react-native';
-import axios from 'axios';
 import { screenC2Prop } from '../../types/navigation';
 import LeftArrowIcon from '../../assets/icons/leftArrow';
 import { useLoading } from '../../hooks/useLoadingIcon';
@@ -14,13 +13,14 @@ import styles from './styles';
 import Title from '../../components/Title';
 import { SCREENS } from '../../utils/constants/screens';
 import { SCREEN_C_VISIBILITY_TIME } from '../../utils/constants/common';
+import { getRLoginApi } from '../../api';
 
 const ScreenC2: FC<screenC2Prop> = ({ navigation, route }) => {
   const selectedItem = route.params;
   const [isLoadingIcon, setIsLoadingIcon] = useState<boolean>(true);
   const { isLoading } = useLoading(async () => {
     try {
-      const res = await axios.get('http://192.168.1.104:3000/rLogin');
+      const res = await getRLoginApi();
       if (res.status === 200) {
         setIsLoadingIcon(isLoading);
         navigation.navigate(SCREENS.SCREEN_D);

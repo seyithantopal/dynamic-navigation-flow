@@ -4,7 +4,6 @@ import {
   useNavigationContainerRef,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import axios from 'axios';
 import Storage from './src/services/storage';
 import { RootStackParamList } from './src/screens/RootStackParamList';
 import { SCREENS } from './src/utils/constants/screens';
@@ -19,6 +18,7 @@ import ScreenC1 from './src/screens/screenC1';
 import ScreenC2 from './src/screens/screenC2';
 import ScreenD from './src/screens/screenD';
 import HomeScreen from './src/screens/homeScreen';
+import { getRLoginApi } from './src/api';
 
 const App = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -27,7 +27,7 @@ const App = () => {
   useEffect(() => {
     const fetchRLogin = async () => {
       try {
-        const res = await axios.get('http://192.168.1.104:3000/rLogin');
+        const res = await getRLoginApi();
         if (res && res.data) {
           await Storage.storeData(SESSION_ID_KEY, res.data.sessionId);
         }

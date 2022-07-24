@@ -1,7 +1,6 @@
-import axios from 'axios';
 import React, { FC, useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
-
+import { getRFetchExperimentsApi } from '../../api';
 import Storage from '../../services/storage';
 import { screenAProp } from '../../types/navigation';
 import { R_EXPERIMENTS_KEY } from '../../utils/constants/common';
@@ -32,9 +31,7 @@ const ScreenA: FC<screenAProp> = ({ navigation }) => {
   useEffect(() => {
     const fetchRFetchExperiments = async () => {
       try {
-        const res = await axios.get(
-          'http://192.168.1.104:3000/rFetchExperiments',
-        );
+        const res = await getRFetchExperimentsApi();
         await Storage.storeData(R_EXPERIMENTS_KEY, res.data);
         setScreen(res.data);
       } catch (err: any) {
