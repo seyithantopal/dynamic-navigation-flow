@@ -12,5 +12,5 @@ const axiosInstance = axios.create({
 export const axiosMockAdapterInstance = new AxiosMockAdapter(axiosMockInstance);
 
 export default process.env.NODE_ENV === 'development'
-  ? axiosInstance
+  ? axiosMockInstance
   : axiosInstance;
