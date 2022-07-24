@@ -1,12 +1,12 @@
 import { AxiosResponse } from 'axios';
-import axiosInstance from './mocks';
+import instance from './mocks';
 
 export const getRLoginApi = async (): Promise<AxiosResponse<any, any>> => {
-  return await axiosInstance.get('rLogin');
+  return await instance.get('rLogin');
 };
 
 export const getRFetchExperimentsApi = async (): Promise<
   AxiosResponse<any, any>
 > => {
-  return await axiosInstance.get('rFetchExperiments');
+  return await instance.get('rFetchExperiments');
 };

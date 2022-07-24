@@ -1,14 +1,21 @@
-import axios from 'axios';
-import AxiosMockAdapter from 'axios-mock-adapter';
 import { SCREENS } from '../../utils/constants/screens';
 import { getRandom, uuidv4 } from '../../utils/utils';
+import instance, { axiosMockAdapterInstance } from '../instance';
 
-const axiosInstance = axios.create({
-  baseURL: 'http://192.168.1.104:3000',
-});
-
-const mock = new AxiosMockAdapter(
-  process.env.NODE_ENV === 'development' ? axiosInstance : axios,
+instance.interceptors.response.use(
+  response => {
+    return response;
+  },
+  error => {
+    if (error.config.url === 'rLogin') {
+      console.log('Error occurred. Retrying...');
+      return new Promise(resolve => {
+        resolve(instance(error.config));
+      });
+    } else {
+      return Promise.reject(error);
+    }
+  },
 );
 
 const screensData = [
@@ -18,7 +25,7 @@ const screensData = [
   SCREENS.NO_SCREEN_B,
 ];
 
-mock.onGet('rLogin').reply(() => {
+axiosMockAdapterInstance.onGet('rLogin').reply(() => {
   return [
     200,
     {
@@ -27,9 +34,9 @@ mock.onGet('rLogin').reply(() => {
   ];
 });
 
-mock.onGet('rFetchExperiments').reply(() => {
+axiosMockAdapterInstance.onGet('rFetchExperiments').reply(() => {
   const randomIndex = getRandom(screensData.length);
   return [200, screensData[randomIndex]];
 });
 
-export default axiosInstance;
+export default instance;
