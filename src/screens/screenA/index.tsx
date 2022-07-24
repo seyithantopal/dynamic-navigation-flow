@@ -5,38 +5,25 @@ import { ActivityIndicator, View } from 'react-native';
 import Storage from '../../services/storage';
 import { screenAProp } from '../../types/navigation';
 import { R_EXPERIMENTS_KEY } from '../../utils/constants/common';
+import { options } from '../../utils/constants/mockData';
 
 import styles from './styles';
 
 const ScreenA: FC<screenAProp> = ({ navigation }) => {
   const [screen, setScreen] = useState<string | null>('');
+
   useEffect(() => {
-    const getRExperiments = async () => {
+    const getRExperimentsFromStorage = async () => {
       try {
+        Storage.clearAll();
         const value = await Storage.getData(R_EXPERIMENTS_KEY);
-        console.log('aaa: ', value, typeof value);
         setScreen(value);
-        /* if (value) {
-          setScreen(value);
-        } */
       } catch (e) {
         // error reading value
       }
     };
-    getRExperiments();
+    getRExperimentsFromStorage();
   }, []);
-
-  useEffect(() => {
-    console.log('useEffect - screen: ', screen);
-    const capitalizedScreen = `${screen
-      ?.charAt(0)
-      .toUpperCase()}${screen?.slice(1)}`;
-
-    if (screen !== null && screen !== '') {
-      handleNavigate(capitalizedScreen);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [screen]);
 
   useEffect(() => {
     const fetchRFetchExperiments = async () => {
@@ -44,8 +31,8 @@ const ScreenA: FC<screenAProp> = ({ navigation }) => {
         const res = await axios.get(
           'http://192.168.1.104:3000/rFetchExperiments',
         );
-        console.log('RExperimentRes: ', res.data);
         await Storage.storeData(R_EXPERIMENTS_KEY, res.data);
+        setScreen(res.data);
       } catch (err: any) {
         console.log(err, JSON.stringify(err));
       }
@@ -53,10 +40,22 @@ const ScreenA: FC<screenAProp> = ({ navigation }) => {
     if (screen === null) {
       fetchRFetchExperiments();
     }
+    if (screen !== null && screen !== '') {
+      const capitalizedScreen = `${screen
+        ?.charAt(0)
+        .toUpperCase()}${screen?.slice(1)}`;
+
+      if (capitalizedScreen === 'NoScreenB') {
+        handleNavigate('ScreenC2', options[0]);
+      } else {
+        handleNavigate(capitalizedScreen);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screen]);
 
-  const handleNavigate = (sc: any) => {
-    navigation.navigate(sc);
+  const handleNavigate = (sc: any, params?: any) => {
+    navigation.navigate(sc, params);
   };
 
   return (

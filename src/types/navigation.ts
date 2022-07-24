@@ -1,6 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../screens/RootStackParamList';
 import {
+  HOME,
   SCREEN_A,
   SCREEN_B1,
   SCREEN_B2,
@@ -9,6 +10,11 @@ import {
   SCREEN_C2,
   SCREEN_D,
 } from '../utils/constants/screens';
+
+export type HomeScreenProp = NativeStackScreenProps<
+  RootStackParamList,
+  typeof HOME
+>;
 
 export type screenAProp = NativeStackScreenProps<
   RootStackParamList,

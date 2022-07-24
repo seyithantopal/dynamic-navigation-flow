@@ -38,6 +38,17 @@ class Storage {
       );
     }
   }
+
+  static async clearAll(): Promise<void> {
+    try {
+      await AsyncStorage.clear();
+    } catch (err) {
+      console.log(
+        'Something went wrong during clearing all data from Storage: ',
+        err,
+      );
+    }
+  }
 }
 
 export default Storage;

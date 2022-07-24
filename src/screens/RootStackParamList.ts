@@ -1,6 +1,7 @@
 import { IChoices, IOptions } from '../types/interfaces';
 
 export type RootStackParamList = {
+  Home: undefined;
   ScreenA: undefined;
   ScreenB1: undefined;
   ScreenB2: undefined;
@@ -10,3 +11,9 @@ export type RootStackParamList = {
   ScreenD: undefined;
   ScreenSample: undefined;
 };
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStackParamList {}
+  }
+}
