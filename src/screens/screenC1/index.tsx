@@ -26,7 +26,7 @@ const ScreenC1: FC<screenC1Prop> = ({ navigation, route }) => {
         navigation.navigate(SCREENS.SCREEN_D);
       }
     } catch (err: any) {
-      console.log(err, JSON.stringify(err));
+      console.log('Something went wrong during fetching rLogin: ', err);
     }
   }, SCREEN_C_VISIBILITY_TIME);
 

@@ -35,7 +35,10 @@ const ScreenA: FC<screenAProp> = ({ navigation }) => {
         await Storage.storeData(R_EXPERIMENTS_KEY, res.data);
         setScreen(res.data);
       } catch (err: any) {
-        console.log(err, JSON.stringify(err));
+        console.log(
+          'Something went wrong during fetching rFetchExperiments: ',
+          err,
+        );
       }
     };
     if (screen === null) {

@@ -31,9 +31,8 @@ const App = () => {
         if (res && res.data) {
           await Storage.storeData(SESSION_ID_KEY, res.data.sessionId);
         }
-        console.log('res: ', res.data);
       } catch (err: any) {
-        console.log(err, JSON.stringify(err));
+        console.log('Something went wrong during fetching rLogin: ', err);
       }
     };
     fetchRLogin();
