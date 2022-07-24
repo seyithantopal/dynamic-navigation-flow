@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  useNavigationContainerRef,
+} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import axios from 'axios';
 import Storage from './src/services/storage';
@@ -19,6 +22,7 @@ import HomeScreen from './src/screens/homeScreen';
 
 const App = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
+  const navigationRef = useNavigationContainerRef();
 
   useEffect(() => {
     const fetchRLogin = async () => {
@@ -36,14 +40,13 @@ const App = () => {
   }, []);
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName={SCREENS.HOME}
-        screenListeners={({ route }) => ({
-          state: () => {
-            Storage.storeData(LAST_SCREEN_KEY, route.name);
-          },
-        })}>
+    <NavigationContainer
+      ref={navigationRef}
+      onStateChange={async () => {
+        const currentRouteName = navigationRef.getCurrentRoute()?.name;
+        await Storage.storeData(LAST_SCREEN_KEY, currentRouteName!);
+      }}>
+      <Stack.Navigator initialRouteName={SCREENS.HOME}>
         <Stack.Screen
           name={SCREENS.HOME}
           component={HomeScreen}

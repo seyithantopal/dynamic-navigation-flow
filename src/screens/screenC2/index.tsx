@@ -4,6 +4,7 @@ import {
   View,
   TouchableWithoutFeedback,
 } from 'react-native';
+import axios from 'axios';
 import { screenC2Prop } from '../../types/navigation';
 import LeftArrowIcon from '../../assets/icons/leftArrow';
 import { useLoading } from '../../hooks/useLoadingIcon';
@@ -11,7 +12,8 @@ import Description from '../../components/Description';
 
 import styles from './styles';
 import Title from '../../components/Title';
-import axios from 'axios';
+import { SCREENS } from '../../utils/constants/screens';
+import { SCREEN_C_VISIBILITY_TIME } from '../../utils/constants/common';
 
 const ScreenC2: FC<screenC2Prop> = ({ navigation, route }) => {
   const selectedItem = route.params;
@@ -21,12 +23,12 @@ const ScreenC2: FC<screenC2Prop> = ({ navigation, route }) => {
       const res = await axios.get('http://192.168.1.104:3000/rLogin');
       if (res.status === 200) {
         setIsLoadingIcon(isLoading);
-        navigation.push('ScreenD');
+        navigation.navigate(SCREENS.SCREEN_D);
       }
     } catch (err: any) {
       console.log(err, JSON.stringify(err));
     }
-  }, 3000);
+  }, SCREEN_C_VISIBILITY_TIME);
 
   return (
     <View style={styles.wrapper}>

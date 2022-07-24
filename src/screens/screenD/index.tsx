@@ -4,6 +4,8 @@ import { screenDProp } from '../../types/navigation';
 
 import TickIcon from '../../assets/icons/tick';
 import styles from './styles';
+import Storage from '../../services/storage';
+import { LAST_SCREEN_KEY } from '../../utils/constants/common';
 
 const ScreenD: FC<screenDProp> = () => {
   useEffect(() => {
@@ -11,6 +13,14 @@ const ScreenD: FC<screenDProp> = () => {
     BackHandler.addEventListener('hardwareBackPress', backAction);
     return () =>
       BackHandler.removeEventListener('hardwareBackPress', backAction);
+  }, []);
+
+  useEffect(() => {
+    const clearAllStorage = async () => {
+      await Storage.removeData(LAST_SCREEN_KEY);
+      await Storage.clearAll();
+    };
+    clearAllStorage();
   }, []);
   return (
     <View style={styles.wrapper}>
