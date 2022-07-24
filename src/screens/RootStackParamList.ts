@@ -9,11 +9,4 @@ export type RootStackParamList = {
   ScreenC1: IChoices;
   ScreenC2: IOptions;
   ScreenD: undefined;
-  ScreenSample: undefined;
 };
-
-declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
-  }
-}

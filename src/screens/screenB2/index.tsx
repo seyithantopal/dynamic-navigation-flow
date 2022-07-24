@@ -7,6 +7,7 @@ import RightArrowIcon from '../../assets/icons/rightArrow';
 import { options } from '../../utils/constants/mockData';
 
 import styles from './styles';
+import { SCREENS } from '../../utils/constants/screens';
 
 const ScreenB2: FC<screenB2Prop> = ({ navigation }) => {
   const [selectedItem, setSelectedItem] = useState<IOptions | null>(null);
@@ -40,7 +41,7 @@ const ScreenB2: FC<screenB2Prop> = ({ navigation }) => {
       <TouchableWithoutFeedback
         onPress={() => {
           if (selectedItem) {
-            navigation.navigate('ScreenC2', {
+            navigation.navigate(SCREENS.SCREEN_C2, {
               name: selectedItem?.name,
               description: selectedItem?.description,
             });

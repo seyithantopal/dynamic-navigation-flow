@@ -6,6 +6,7 @@ import Storage from '../../services/storage';
 import { screenAProp } from '../../types/navigation';
 import { R_EXPERIMENTS_KEY } from '../../utils/constants/common';
 import { options } from '../../utils/constants/mockData';
+import { SCREENS } from '../../utils/constants/screens';
 
 import styles from './styles';
 
@@ -19,7 +20,10 @@ const ScreenA: FC<screenAProp> = ({ navigation }) => {
         const value = await Storage.getData(R_EXPERIMENTS_KEY);
         setScreen(value);
       } catch (e) {
-        // error reading value
+        console.log(
+          'Something went wrong during getting rExperiments from storage: ',
+          e,
+        );
       }
     };
     getRExperimentsFromStorage();
@@ -45,8 +49,8 @@ const ScreenA: FC<screenAProp> = ({ navigation }) => {
         ?.charAt(0)
         .toUpperCase()}${screen?.slice(1)}`;
 
-      if (capitalizedScreen === 'NoScreenB') {
-        handleNavigate('ScreenC2', options[0]);
+      if (capitalizedScreen === SCREENS.NO_SCREEN_B) {
+        handleNavigate(SCREENS.SCREEN_C2, options[0]);
       } else {
         handleNavigate(capitalizedScreen);
       }

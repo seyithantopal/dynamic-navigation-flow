@@ -11,6 +11,7 @@ import RightArrowIcon from '../../assets/icons/rightArrow';
 import { choices } from '../../utils/constants/mockData';
 
 import styles from './styles';
+import { SCREENS } from '../../utils/constants/screens';
 
 const ScreenB1: FC<screenB2Prop> = ({ navigation }) => {
   const { height } = Dimensions.get('window');
@@ -60,7 +61,7 @@ const ScreenB1: FC<screenB2Prop> = ({ navigation }) => {
       <View style={styles.mask} />
       <TouchableWithoutFeedback
         onPress={() => {
-          navigation.navigate('ScreenC1', {
+          navigation.navigate(SCREENS.SCREEN_C1, {
             name: choices[selectedIndex].name,
             description: choices[selectedIndex].description,
           });

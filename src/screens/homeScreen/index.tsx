@@ -5,6 +5,7 @@ import { HomeScreenProp } from '../../types/navigation';
 import { LAST_SCREEN_KEY } from '../../utils/constants/common';
 import { options } from '../../utils/constants/mockData';
 import { SCREENS } from '../../utils/constants/screens';
+import { RootStackParamList } from '../RootStackParamList';
 
 const HomeScreen: FC<HomeScreenProp> = ({ navigation }) => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const HomeScreen: FC<HomeScreenProp> = ({ navigation }) => {
         if (!!value === false) {
           navigation.navigate(SCREENS.SCREEN_A);
         } else {
-          navigation.navigate(value as SCREENS, options[0]);
+          navigation.navigate(value as keyof RootStackParamList, options[0]);
         }
       } catch (e) {
         console.log('Something went wrong during opening the last screen');

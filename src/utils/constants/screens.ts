@@ -7,4 +7,5 @@ export enum SCREENS {
   SCREEN_C1 = 'ScreenC1',
   SCREEN_C2 = 'ScreenC2',
   SCREEN_D = 'ScreenD',
+  NO_SCREEN_B = 'NoScreenB',
 }
